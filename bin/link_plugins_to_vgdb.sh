@@ -1,3 +1,5 @@
 #!/bin/bash
 
-ln -s ./plugins ../vgdb/plugins
+rm -rf ../vgdb/plugins
+
+ln -s ../tide-plugins/plugins ../vgdb/plugins
