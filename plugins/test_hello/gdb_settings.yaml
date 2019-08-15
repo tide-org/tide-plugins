@@ -24,3 +24,6 @@ settings:
 keybindings:
     - key: F1
       command: do_hello
+
+variables:
+    test_variable: 'test variable value'
