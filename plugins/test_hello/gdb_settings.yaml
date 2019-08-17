@@ -23,6 +23,8 @@ settings:
     process:
         ttl_stream_timeout: 0.08
         main_process_name: 'sh'
+    editor:
+        name: 'stdio'
 
 keybindings:
     - key: F1
