@@ -1,6 +1,10 @@
 ---
 
 commands:
+    print_config:
+        steps:
+            - print_debug:
+                all_config: True
     do_hello:
         steps:
             - run_command:
@@ -18,8 +22,7 @@ buffers:
 settings:
     process:
         ttl_stream_timeout: 0.08
-        main_process_name: 'bash'
-        end_of_output_regex: 'bash-3\.2\$'
+        main_process_name: 'sh'
 
 keybindings:
     - key: F1
