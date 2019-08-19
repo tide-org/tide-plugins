@@ -10,7 +10,6 @@ commands:
             - run_command:
                 command: 'echo "hello world"'
 
-
 events:
     after_startup:
         - 'do_hello'
