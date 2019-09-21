@@ -27,12 +27,17 @@ commands:
                 try_set: 'current_line_number'
                 else_set: '0'
             - run_config_command:
-                name: 'set_highlight_line'
+                name: 'update_editor'
+    update_editor:
+        steps:
             - run_config_command:
                 name: 'set_piets'
                 input_args:
                     piet_match_array_variable: 'file_lines'
                     current_filename_variable: 'current_buffer_name'
+            - run_config_command:
+                name: 'set_highlight_line'
+
     set_highlight_line:
         steps:
             - run_editor_function:
