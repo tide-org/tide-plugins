@@ -17,7 +17,7 @@ commands:
               when: app_entrypoint != None
             - run_editor_function:
                 function_file: 'run_to_entrypoint'
-                function_name: 'run_to_entrypoint#was_successful'
+                function_name: 'was_successful'
               when: app_entrypoint != None
     get_set_entrypoint:
         steps:
