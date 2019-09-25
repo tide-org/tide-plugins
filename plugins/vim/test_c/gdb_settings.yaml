@@ -119,7 +119,7 @@ buffers:
     vg_session_log:
         on_startup: true
     vg_locals:
-        on_startup: false
+        on_startup: true
         command: 'list_locals'
     vg_test_template:
         on_startup: true
@@ -140,7 +140,7 @@ buffers:
 
 settings:
     editor:
-        name: 'stdio'
+        name: 'vim81'
     process:
         ttl_stream_timeout: 0.08
         main_process_name: 'gdb'
