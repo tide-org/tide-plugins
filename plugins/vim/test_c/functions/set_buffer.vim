@@ -47,6 +47,6 @@ function! set_buffer#find_window(bufname, ...)
         endif
         return l:found_window
     else
-        return -1
+        return winnr("$")
     endif
 endfunction
