@@ -125,7 +125,7 @@ buffers:
         on_startup: true
         command: 'display_template'
     vg_code:
-        on_startup: true
+        on_startup: false
         line_numbers: true
         buffer_filename_variable: 'current_filename'
         primary_window: true
