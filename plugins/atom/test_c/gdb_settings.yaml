@@ -40,6 +40,7 @@ commands:
                 function_name: 'set_highlight_line'
                 event_input_args:
                     highlight_line_variable: 'current_line_number'
+                    current_filename_variable: 'current_buffer_name'
     set_breakpoint:
         steps:
             - get_current_buffer_name:
@@ -109,6 +110,10 @@ events:
         - 'load_file'
         - 'set_highlight_for_breakpoint_and_diff'
         - 'info_source'
+
+filters:
+    vg_code:
+
 
 buffers:
     vg_session_log:
