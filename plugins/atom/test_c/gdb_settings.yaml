@@ -40,7 +40,7 @@ commands:
                 function_name: 'set_highlight_line'
                 event_input_args:
                     highlight_line_variable: 'current_line_number'
-                    current_filename_variable: 'current_buffer_name'
+                    current_filename_variable: 'current_filename'
     set_breakpoint:
         steps:
             - get_current_buffer_name:
@@ -54,7 +54,7 @@ commands:
                 name: 'set_piets'
                 input_args:
                     piet_match_array_variable: 'file_lines'
-                    current_filename_variable: 'current_buffer_name'
+                    current_filename_variable: 'current_filename'
     continue:
         steps:
             - run_command:
