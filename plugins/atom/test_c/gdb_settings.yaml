@@ -26,13 +26,6 @@ commands:
                 match_group: 1
                 try_set: 'current_line_number'
                 else_set: '0'
-            - run_config_command:
-                name: 'set_highlight_line'
-            - run_config_command:
-                name: 'set_piets'
-                input_args:
-                    piet_match_array_variable: 'file_lines'
-                    current_filename_variable: 'current_buffer_name'
     set_highlight_line:
         steps:
             - run_editor_function:
@@ -96,6 +89,7 @@ commands:
         steps:
             - display_template:
                 filename: 'test_template.j2'
+        buffer_name: 'vg_test_template'
 
 variables:
     current_filename: ''
@@ -124,6 +118,9 @@ buffers:
     vg_test_template:
         on_startup: true
         command: 'display_template'
+        events:
+            after_command:
+              - command: 'display_template'
     vg_code:
         on_startup: true
         line_numbers: true
@@ -135,7 +132,7 @@ buffers:
                 - command: 'set_piets'
                   input_args:
                       piet_match_array_variable: 'file_lines'
-                      current_filename_variable: 'current_filename'
+                      current_filename_variable: 'current_buffer_name'
                 - command: 'set_highlight_line'
 
 settings:
