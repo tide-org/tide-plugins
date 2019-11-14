@@ -1,0 +1,29 @@
+---
+
+commands:
+    print_hello:
+        steps:
+            - print_debug:
+                msg: "hello"
+
+events:
+    after_startup:
+        - 'print_hello'
+
+buffers:
+    vg_session_log:
+        on_startup: true
+
+settings:
+    process:
+        ttl_stream_timeout: 0.08
+        main_process_name: 'sh'
+    editor:
+        name: 'stdio'
+
+keybindings:
+    - key: F1
+      command: do_hello
+
+variables:
+    test_variable: 'test variable value'

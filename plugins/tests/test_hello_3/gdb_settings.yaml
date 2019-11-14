@@ -1,0 +1,11 @@
+---
+
+settings:
+    process:
+        main_process_name: 'sh'
+    editor:
+        name: 'stdio'
+
+variables:
+    tide_test_mode_daemonise: True 
+    tide_test_mode_skip_message_wait: True
