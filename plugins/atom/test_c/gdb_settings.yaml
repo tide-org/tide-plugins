@@ -127,7 +127,7 @@ buffers:
                 - command: 'set_piets'
                   input_args:
                       piet_match_array_variable: 'file_lines'
-                      current_filename_variable: 'current_buffer_name'
+                      current_filename_variable: 'current_filename'
                 - command: 'set_highlight_line'
 
 settings:
