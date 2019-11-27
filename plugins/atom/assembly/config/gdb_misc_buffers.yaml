@@ -6,25 +6,25 @@ buffers:
         on_startup: true
     vg_watchpoints:
         command: 'list_watchpoints'
-    vg_registers:
-        command: 'list_registers'
-        on_startup: true
-        events:
-            after_command:
-                - command: 'do_buffer_diff'
-                  input_args:
-                    buffer_cache_variable: 'registers_cache'
+#    vg_registers:
+#        command: 'list_registers'
+#        on_startup: false
+#        events:
+#            after_command:
+#                - command: 'do_buffer_diff'
+#                  input_args:
+#                    buffer_cache_variable: 'registers_cache'
     vg_breakpoints:
         command: 'list_breakpoints'
         on_startup: true
-    vg_memory:
-        command: 'list_memory'
-        on_startup: true
-        events:
-            after_command:
-                - command: 'do_buffer_diff'
-                  input_args:
-                      buffer_cache_variable: 'memory_cache'
+#    vg_memory:
+#        command: 'list_memory'
+#        on_startup: true
+#        events:
+#            after_command:
+#                - command: 'do_buffer_diff'
+#                  input_args:
+#                      buffer_cache_variable: 'memory_cache'
 
 commands:
     list_memory:

@@ -1,11 +1,11 @@
 ---
 
 commands:
-    do_buffer_diff:
-        steps:
-            - run_editor_function:
-                function_file: 'buffer_diff'
-                function_name: 'check_do_buffer_diff'
+#    do_buffer_diff:
+#        steps:
+#            - run_editor_function:
+#                function_file: 'buffer_diff'
+#                function_name: 'check_do_buffer_diff'
     set_piets:
         steps:
             - run_editor_function:

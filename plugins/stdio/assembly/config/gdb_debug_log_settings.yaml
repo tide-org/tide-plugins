@@ -2,5 +2,5 @@
 
 settings:
     debugging:
-        log_to_file: true
+        log_to_file: false
         log_filename: 'vgdb_debug.log'
