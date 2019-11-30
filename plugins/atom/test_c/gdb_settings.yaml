@@ -34,6 +34,8 @@ commands:
                 event_input_args:
                     highlight_line_variable: 'current_line_number'
                     current_filename_variable: 'current_filename'
+                    match_line_on_string: 'false'
+                    match_buffer_on_filename: 'false'
     set_breakpoint:
         steps:
             - get_current_buffer_name:
@@ -106,7 +108,7 @@ filters:
 
 buffers:
     vg_session_log:
-        on_startup: false
+        on_startup: true
     vg_locals:
         on_startup: false
         command: 'list_locals'
