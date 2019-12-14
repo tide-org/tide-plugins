@@ -34,6 +34,7 @@ function! set_buffer#get_current_buffer(file_name, buffer_name)
   for buf in getbufinfo()
     if buf.name == ''
       let l:empty_number = buf.bufnr
+      break
     endif
   endfor
 

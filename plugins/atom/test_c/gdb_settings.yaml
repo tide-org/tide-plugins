@@ -134,7 +134,7 @@ buffers:
 
 settings:
     editor:
-        name: 'stdio'
+        name: 'vim81'
     process:
         ttl_stream_timeout: 0.08
         main_process_name: 'gdb'
@@ -144,5 +144,3 @@ settings:
         filters_path: './filters'
         functions_path: './functions'
         templates_path: './templates'
-    logging:
-        use_session_log_file: False

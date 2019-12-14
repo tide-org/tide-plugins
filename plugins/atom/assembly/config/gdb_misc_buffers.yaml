@@ -18,14 +18,14 @@ buffers:
     vg_breakpoints:
         command: 'list_breakpoints'
         on_startup: false
-#    vg_memory:
-#        command: 'list_memory'
-#        on_startup: true
-#        events:
-#            after_command:
-#                - command: 'do_buffer_diff'
-#                  input_args:
-#                      buffer_cache_variable: 'memory_cache'
+    vg_memory:
+        command: 'list_memory'
+        on_startup: true
+        events:
+            after_command:
+                - command: 'do_buffer_diff'
+                  input_args:
+                      buffer_cache_variable: 'memory_cache'
 
 commands:
     list_memory:
