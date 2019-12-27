@@ -103,23 +103,14 @@ events:
         - 'info_source'
 
 filters:
-    vg_base:
-      pre_processors:
-        - split: '[\r\n]+'
-      line_formatters:
-        - replace: '\r', ''
-        - replace: '"', "''"
-        - replace: "\\t", "    "
-        - replace: "\\n", ''
-
-    vg_session_log:
-      pre_processors:
-        - split: '[\r\n]+'
-      line_formatters:
-        - replace: '\r', ''
-        - replace: '"', "''"
-        - replace: "\\t", "    "
-        - replace: "\\n", ''
+    c_base:
+        pre_processors:
+          - split: '[\r\n]+'
+        line_formatters:
+          - replace: ['\r', '']
+          - replace: ['"', "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", '']
 
 buffers:
     vg_session_log:
@@ -148,6 +139,8 @@ buffers:
                 - command: 'set_highlight_line'
 
 settings:
+    buffers:
+        base_filter_name: 'c_base'
     editor:
         name: 'stdio'
     process:
