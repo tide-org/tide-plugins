@@ -1,0 +1,33 @@
+---
+
+settings:
+    process:
+        main_process_name: 'sh'
+    editor:
+        name: 'test_mock'
+
+variables:
+    tide_test_mode_daemonise: True 
+    tide_test_mode_skip_message_wait: True
+    test_variable_zero: 0
+    test_variable_one: 1
+    test_variable_string: "this is a string"
+
+commands:
+
+    test_command:
+        steps:
+            - run_command:
+                command: 'echo "hello"'
+
+    test_command_two:
+        steps:
+            - run_command:
+                command: 'echo "hello"'
+              when: 1 == 1
+
+    test_command_three:
+        steps:
+            - run_command:
+                command: 'echo "hello"'
+              when: 1 == 0
