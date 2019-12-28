@@ -103,14 +103,22 @@ events:
         - 'info_source'
 
 filters:
+    vg_session_log:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
     c_base:
         pre_processors:
-          - split: '[\r\n]+'
+          - split_by: "\n"
         line_formatters:
-          - replace: ['\r', '']
-          - replace: ['"', "''"]
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
           - replace: ["\\t", "    "]
-          - replace: ["\\n", '']
+          - replace: ["\\n", ""]
 
 buffers:
     vg_session_log:
@@ -126,6 +134,7 @@ buffers:
               - command: 'display_template'
     vg_code:
         on_startup: true
+        use_buffer_cache: false
         line_numbers: true
         buffer_filename_variable: 'current_filename'
         primary_window: true
@@ -155,3 +164,10 @@ settings:
 #    debugging:
 #        print_actions: True
 #        print_commands: True
+#        print_filters: True
+
+templates:
+  vg_template:
+    value: |
+      this is a test value
+      for a template
