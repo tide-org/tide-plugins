@@ -1,0 +1,32 @@
+filters:
+    vg_session_log:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
+    vg_base:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - regex_capture: ['^~"(.*\\n)\"*\r$', 1]
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
+    vg_disassembly:
+        excluded_lines:
+          - 'Dump of assembler code'
+          - 'End of assembler dump.'
+        line_formatters:
+          - cut: [3, ''] 
+          - trim: ['right', '']
+          - add: ['left', '    ']
+        line_matchers_pre:
+          - variable_name: 'no_program_counter'
+          - regex: 'No function contains program counter for selected frame'
+          - type: 'bool'
+          - description: 'specifies whether the program counter can be determined'
+
