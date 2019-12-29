@@ -25,8 +25,13 @@ filters:
           - trim: ['right', '']
           - add: ['left', '    ']
         line_matchers_pre:
-          - variable_name: 'no_program_counter'
-          - regex: 'No function contains program counter for selected frame'
-          - type: 'bool'
-          - description: 'specifies whether the program counter can be determined'
-
+          - no_program_counter:
+              regex: 'No function contains program counter for selected frame'
+              type: 'bool'
+              description: 'specifies whether the program counter can be determined'
+    vg_breakpoints:
+        line_matchers_post:
+          - breakpoints:
+              regex: '(0x[0-9a-f]{2,16})'
+              type: 'array'
+              description: 'match each address in the breakpoints output and place in an array'

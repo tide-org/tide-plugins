@@ -19,3 +19,14 @@ commands:
         steps:
             - run_command:
                 command: 'echo "hello"'
+
+filters:
+    vg_base:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
+
