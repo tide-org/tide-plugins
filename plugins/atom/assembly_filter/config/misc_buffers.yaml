@@ -26,6 +26,7 @@ buffers:
                 - command: 'do_buffer_diff'
                   input_args:
                       buffer_cache_variable: 'memory_cache'
+                      buffer_name: 'vg_memory'
 
 commands:
     list_memory:
