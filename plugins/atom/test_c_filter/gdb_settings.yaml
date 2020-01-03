@@ -49,20 +49,14 @@ commands:
         steps:
             - run_command:
                 command: 'continue'
-            - run_config_command:
-                name: 'info_source'
     run:
         steps:
             - run_command:
                 command: 'run'
-            - run_config_command:
-                name: 'info_source'
     step:
         steps:
             - run_command:
                 command: 'step'
-            - run_config_command:
-                name: 'info_source'
     set_highlight_for_breakpoint_and_diff:
         steps:
             - run_editor_function:
@@ -100,7 +94,6 @@ events:
     after_startup:
         - 'load_file'
         - 'set_highlight_for_breakpoint_and_diff'
-        - 'info_source'
 
 filters:
     vg_session_log:
@@ -138,6 +131,7 @@ buffers:
         line_numbers: true
         buffer_filename_variable: 'current_filename'
         primary_window: true
+        command: 'info_source'
         language: 'c'
         events:
             after_command:
@@ -158,16 +152,5 @@ settings:
         main_process_default_arguments: ' -q --interpreter=mi2 '
         end_of_output_regex: '\(gdb\)'
     plugins:
-        filters_path: './filters'
         functions_path: './functions'
         templates_path: './templates'
-#    debugging:
-#        print_actions: True
-#        print_commands: True
-#        print_filters: True
-
-templates:
-  vg_template:
-    value: |
-      this is a test value
-      for a template

@@ -1,10 +1,16 @@
 ---
 
+test_buffer:
+    on_startup: false
+
 settings:
     process:
         main_process_name: 'sh'
     editor:
         name: 'test_mock'
+    buffers:
+        base_filter_name: 'test_base'
+
 
 variables:
     tide_test_mode_daemonise: True 
@@ -19,3 +25,16 @@ commands:
         steps:
             - run_command:
                 command: 'echo "hello"'
+        buffer_name: 'test_buffer'
+
+filters:
+    test_base:
+        pre_processors:
+          - split_by: "\n"
+    vg_session_log:
+        pre_processors:
+          - split_by: "\n"
+    test_buffer:
+        pre_processors:
+          - split_by: "\n"
+
