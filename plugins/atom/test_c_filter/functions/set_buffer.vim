@@ -6,9 +6,10 @@ function! set_buffer#for_filename(...)
    if len(l:file_name) > 0 && len(l:buffer_name) > 0
      let l:buffer_number = set_buffer#get_current_buffer(l:file_name, l:buffer_name)
      if l:buffer_number > 0
+         set noswapfile
          set buftype=
          set modifiable
-         execute "buffer " . l:buffer_number
+         execute "silent buffer! " . l:buffer_number
          execute "silent edit! " . l:file_name
      endif
    endif
