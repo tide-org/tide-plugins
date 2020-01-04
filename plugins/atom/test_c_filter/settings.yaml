@@ -72,6 +72,14 @@ commands:
             - run_editor_function:
                 function_file: 'buffer_piets'
                 function_name: 'set_piets'
+    list_variables:
+        steps:
+            - run_command:
+                command: 'info variables'
+    list_args:
+        steps:
+            - run_command:
+                command: 'info args'
     list_locals:
         steps:
             - run_command:
@@ -112,16 +120,33 @@ filters:
           - replace: ["'", "''"]
           - replace: ["\\t", "    "]
           - replace: ["\\n", ""]
+    vg_locals:
+        line_formatters:
+          - regex_capture: ['^~"(.*)\"$', 1]
+    vg_args:
+        line_formatters:
+          - regex_capture: ['^~"(.*)\"$', 1]
+    vg_variables:
+        line_formatters:
+          - regex_capture: ['^~"(.*)\"$', 1]
+    vg_breakpoints:
+        line_formatters:
+          - regex_capture: ['^~"(.*)\"$', 1]
 
 buffers:
     vg_session_log:
         on_startup: true
+    vg_args:
+        on_startup: true
+        command: 'list_args'
+    vg_variables:
+        on_startup: true
+        command: 'list_variables'
     vg_locals:
-        on_startup: false
+        on_startup: true
         command: 'list_locals'
     vg_test_template:
         on_startup: true
-        command: 'display_template'
         events:
             after_command:
               - command: 'display_template'

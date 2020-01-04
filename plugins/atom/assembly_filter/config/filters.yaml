@@ -1,3 +1,5 @@
+---
+
 filters:
     vg_session_log:
         pre_processors:
