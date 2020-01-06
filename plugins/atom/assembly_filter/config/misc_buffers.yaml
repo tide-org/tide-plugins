@@ -3,12 +3,12 @@
 buffers:
     vg_session_log:
         scrolling_buffer: true
-        on_startup: false
+        on_startup: true
     vg_watchpoints:
         command: 'list_watchpoints'
     vg_registers:
         command: 'list_registers'
-        on_startup: true
+        on_startup: false
         events:
             after_command:
                 - command: 'do_buffer_diff'
@@ -17,10 +17,10 @@ buffers:
                       buffer_name: 'vg_registers'
     vg_breakpoints:
         command: 'list_breakpoints'
-        on_startup: true
+        on_startup: false
     vg_memory:
         command: 'list_memory'
-        on_startup: true
+        on_startup: false
         events:
             after_command:
                 - command: 'do_buffer_diff'
