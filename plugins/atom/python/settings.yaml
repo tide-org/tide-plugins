@@ -1,10 +1,6 @@
 ---
 
 commands:
-    load_file:
-        steps:
-            - run_command:
-                command: 'file ~/Source/wilvk/vgdb/tests/binaries/c_test/c_test'
     info_source:
         steps:
             - run_command:
@@ -92,26 +88,15 @@ variables:
 
 events:
     after_startup:
-        - 'load_file'
         - 'set_highlight_for_breakpoint_and_diff'
 
 filters:
     vg_session_log:
         pre_processors:
           - split_by: "\n"
-        line_formatters:
-          - replace: ["\r", ""]
-          - replace: ["'", "''"]
-          - replace: ["\\t", "    "]
-          - replace: ["\\n", ""]
     c_base:
         pre_processors:
           - split_by: "\n"
-        line_formatters:
-          - replace: ["\r", ""]
-          - replace: ["'", "''"]
-          - replace: ["\\t", "    "]
-          - replace: ["\\n", ""]
 
 buffers:
     vg_session_log:
@@ -119,12 +104,6 @@ buffers:
     vg_locals:
         on_startup: false
         command: 'list_locals'
-    vg_test_template:
-        on_startup: true
-        command: 'display_template'
-        events:
-            after_command:
-              - command: 'display_template'
     vg_code:
         on_startup: true
         use_buffer_cache: false
@@ -148,9 +127,9 @@ settings:
         name: 'stdio'
     process:
         ttl_stream_timeout: 0.08
-        main_process_name: 'gdb'
-        main_process_default_arguments: ' -q --interpreter=mi2 '
-        end_of_output_regex: '\(gdb\)'
+        main_process_name: 'python3'
+        main_process_default_arguments: ' -m gdb ~/Source/wilvk/vgdb/tests/binaries/test_py_script.py'
+        end_of_output_regex: '\(Pdb\)\s'
     plugins:
         functions_path: './functions'
         templates_path: './templates'
