@@ -3,11 +3,9 @@
 commands:
     info_source:
         steps:
-            - run_command:
-                command: 'list'
             - run_command_with_match:
-                command: 'info source'
-                match: 'Located in (.*)\"$'
+                command: 'where'
+                match: '^>\s(.*)\(\d+\).*$'
                 match_group: 1
                 try_set: 'current_filename'
             - run_editor_function:
@@ -17,11 +15,12 @@ commands:
                     buffer_name: 'vg_code'
                     file_name: "{{ current_filename }}"
             - run_command_with_match:
-                command: 'backtrace'
-                match: '\#0\s+.*\(\)\s.*:(\d+)'
+                command: 'where'
+                match: '^>\s.*\((\d+)\).*$'
                 match_group: 1
                 try_set: 'current_line_number'
                 else_set: '0'
+
     set_highlight_line:
         steps:
             - run_editor_function:
@@ -32,6 +31,7 @@ commands:
                     current_filename_variable: 'current_filename'
                     match_line_on_string: 'false'
                     match_buffer_on_filename: 'false'
+
     set_breakpoint:
         steps:
             - get_current_buffer_name:
@@ -41,18 +41,22 @@ commands:
                 value: 'break {{ current_buffer_name }}:{{ user_input_args }}'
             - run_command_string:
                 variable_name: 'breakpoint_command'
+
     continue:
         steps:
             - run_command:
-                command: 'continue'
-    run:
+                command: 'step'
+
+    next:
         steps:
             - run_command:
-                command: 'run'
+                command: 'next'
+
     step:
         steps:
             - run_command:
                 command: 'step'
+
     set_highlight_for_breakpoint_and_diff:
         steps:
             - run_editor_function:
@@ -61,30 +65,20 @@ commands:
     set_piets:
         steps:
             - run_command_with_match:
-                command: 'info breakpoints'
+                command: 'break'
                 match: '^~\"\d+\s+.*at\s(.*)\"$'
                 match_group: 1
                 try_set_array: 'file_lines'
             - run_editor_function:
                 function_file: 'buffer_piets'
                 function_name: 'set_piets'
-    list_locals:
-        steps:
-            - run_command:
-                command: 'info locals'
-    display_template:
-        steps:
-            - display_template:
-                filename: 'test_template.j2'
-        buffer_name: 'vg_test_template'
 
 variables:
     current_filename: ''
     current_line_number: 0
     file_lines: []
     current_buffer_name: ''
-    breakpoint_highlight_color: 'darkred'
-    mapped_file_buffers: {}
+    breakpoint_highlight_color: 'red'
 
 events:
     after_startup:
@@ -101,9 +95,6 @@ filters:
 buffers:
     vg_session_log:
         on_startup: true
-    vg_locals:
-        on_startup: false
-        command: 'list_locals'
     vg_code:
         on_startup: true
         use_buffer_cache: false
@@ -128,7 +119,7 @@ settings:
     process:
         ttl_stream_timeout: 0.08
         main_process_name: 'python3'
-        main_process_default_arguments: ' -m gdb ~/Source/wilvk/vgdb/tests/binaries/test_py_script.py'
+        main_process_default_arguments: ' -m pdb /Users/willvk/Source/wilvk/vgdb/tests/binaries/test_py_script.py'
         end_of_output_regex: '\(Pdb\)\s'
     plugins:
         functions_path: './functions'
