@@ -25,7 +25,7 @@ settings:
         filters_path: "../filters"
         functions_path: "../functions"
     debugging:
-        print_to_stdout: true
+        print_to_stdout: false
         debug_action: False
         debug_command_action: False
         debug_command_handler: False
