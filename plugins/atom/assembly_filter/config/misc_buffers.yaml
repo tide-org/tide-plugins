@@ -8,7 +8,7 @@ buffers:
         command: 'list_watchpoints'
     vg_registers:
         command: 'list_registers'
-        on_startup: false
+        on_startup: true
         events:
             after_command:
                 - command: 'do_buffer_diff'
@@ -17,10 +17,10 @@ buffers:
                       buffer_name: 'vg_registers'
     vg_breakpoints:
         command: 'list_breakpoints'
-        on_startup: false
+        on_startup: true
     vg_memory:
         command: 'list_memory'
-        on_startup: false
+        on_startup: true
         events:
             after_command:
                 - command: 'do_buffer_diff'
