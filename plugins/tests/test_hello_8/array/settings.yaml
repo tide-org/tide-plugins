@@ -1,0 +1,36 @@
+---
+
+settings:
+    process:
+        main_process_name: 'sh'
+    editor:
+        name: 'test_mock'
+
+variables:
+    tide_test_mode_daemonise: True 
+    tide_test_mode_skip_message_wait: True
+    test_variable_zero: 0
+    test_variable_one: 1
+    test_variable_string: "this is a string"
+
+commands:
+
+    test_command:
+        steps:
+            - run_command_with_match:
+                command: 'echo "hello there. this is a hex number: 0x00001234abce ..\nand this is a second: 0x000000009876 .."'
+                match: '(0x[0-9a-f]{8,16})'
+                match_group: 1
+                try_set_array: 'test_match_array'
+
+
+filters:
+    vg_base:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
+
