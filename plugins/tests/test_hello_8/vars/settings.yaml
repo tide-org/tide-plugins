@@ -1,0 +1,41 @@
+---
+
+settings:
+    process:
+        main_process_name: 'sh'
+    editor:
+        name: 'test_mock'
+    process:
+        ttl_stream_timeout: 0.05
+
+variables:
+    tide_test_mode_daemonise: True 
+    tide_test_mode_skip_message_wait: True
+    test_variable_zero: 0
+    test_variable_one: 1
+    test_variable_string: "this is a string"
+
+commands:
+
+    test_command:
+        steps:
+            - run_command_with_match:
+                command: 'echo "hello there. this is a hex number: 0x00001234abcd and this is a counter: 999"'
+                match_regex: '^.*hello.*(0x[0-9a-f]{2,16}).*counter.*([0-9]{1,4})$'
+                match_vars:
+                  - match_group: 1
+                    try_set: 'test_match_variable_one'
+                  - match_group: 2
+                    try_set: 'test_match_variable_two'
+
+
+filters:
+    vg_base:
+        pre_processors:
+          - split_by: "\n"
+        line_formatters:
+          - replace: ["\r", ""]
+          - replace: ["'", "''"]
+          - replace: ["\\t", "    "]
+          - replace: ["\\n", ""]
+
