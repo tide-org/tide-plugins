@@ -3,11 +3,15 @@
 commands:
     info_source:
         steps:
-            - run_command_with_match:
+            - run_command_with_match_group:
                 command: 'where'
-                match: '^>\s(.*)\(\d+\).*$'
-                match_group: 1
-                try_set: 'current_filename'
+                match_regex: '^>\s(.*)\((\d+)\).*$'
+                matches:
+                  - match_group: 1
+                    try_set: 'current_filename'
+                  - match_group: 2
+                    try_set: 'current_line_number'
+                    else_set: '0'
             - run_editor_function:
                 function_file: 'set_buffer'
                 function_name: 'for_filename'
