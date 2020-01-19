@@ -49,7 +49,7 @@ commands:
     continue:
         steps:
             - run_command:
-                command: 'step'
+                command: 'continue'
 
     next:
         steps:
