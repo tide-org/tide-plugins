@@ -168,7 +168,7 @@ buffers:
 
 settings:
     debugging:
-        print_to_stdout: true
+        print_to_stdout: false
     buffers:
         base_filter_name: 'c_base'
     editor:
