@@ -137,19 +137,14 @@ buffers:
     vg_session_log:
         on_startup: true
     vg_args:
-        on_startup: true
+        on_startup: false
         command: 'list_args'
     vg_variables:
-        on_startup: true
+        on_startup: false
         command: 'list_variables'
     vg_locals:
-        on_startup: true
+        on_startup: false
         command: 'list_locals'
-    vg_test_template:
-        on_startup: true
-        events:
-            after_command:
-              - command: 'display_template'
     vg_code:
         on_startup: true
         use_buffer_cache: false
@@ -165,8 +160,15 @@ buffers:
                       piet_match_array_variable: 'file_lines'
                       current_filename_variable: 'current_filename'
                 - command: 'set_highlight_line'
+    vg_test_template:
+        on_startup: true
+        events:
+            after_command:
+              - command: 'display_template'
 
 settings:
+    debugging:
+        print_to_stdout: true
     buffers:
         base_filter_name: 'c_base'
     editor:
