@@ -10,7 +10,7 @@ function! buffer_piets#set_piets(...)
       if len(l:piet_match_list) > 0
           for l:piet_match in l:piet_match_list
               let l:match_tuple = split(l:piet_match, ":")
-              if l:match_tuple[0] ==? fnamemodify(l:current_filename, ":t")
+              if l:match_tuple[0] ==? l:current_filename
                   execute "sign place 3 line=" . l:match_tuple[1] . " name=piet file=" . expand("%:p")
               endif
           endfor

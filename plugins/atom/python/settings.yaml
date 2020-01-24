@@ -70,7 +70,7 @@ commands:
         steps:
             - run_command_with_match:
                 command: 'break'
-                match: '^~\"\d+\s+.*at\s(.*)\"$'
+                match: '\d+\s+.*at\s(.*)\r$'
                 match_group: 1
                 try_set_array: 'file_lines'
             - run_editor_function:
@@ -116,6 +116,9 @@ buffers:
                 - command: 'set_highlight_line'
 
 settings:
+    debugging:
+        print_to_stdout: false
+        print_to_stdout_filters: false
     buffers:
         base_filter_name: 'c_base'
     editor:
