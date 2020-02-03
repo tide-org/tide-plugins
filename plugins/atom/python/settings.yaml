@@ -18,12 +18,6 @@ commands:
                 function_args:
                     buffer_name: 'vg_code'
                     file_name: "{{ current_filename }}"
-            - run_command_with_match:
-                command: 'where'
-                match: '^>\s.*\((\d+)\).*$'
-                match_group: 1
-                try_set: 'current_line_number'
-                else_set: '0'
 
     set_highlight_line:
         steps:
