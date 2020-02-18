@@ -1,9 +1,0 @@
----
-
-events:
-    after_startup:
-        - 'set_highlight_for_breakpoint'
-        - 'connect_to_remote'
-        - 'run_to_entrypoint'
-    after_command:
-        - 'check_set_remote'

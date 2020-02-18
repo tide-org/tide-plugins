@@ -71,5 +71,5 @@ commands:
                 try_set: 'current_frame_address'
     run_user_command:
         steps:
-            - run_command_string:
-                variable_name: 'user_input_args'
+            - run_command:
+                command: '{{ user_input_args }}'

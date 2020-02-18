@@ -34,11 +34,8 @@ commands:
         steps:
             - get_current_buffer_name:
                 set_variable: 'current_buffer_name'
-            - set_var:
-                name: 'breakpoint_command'
-                value: 'break {{ current_buffer_name }}:{{ user_input_args }}'
-            - run_command_string:
-                variable_name: 'breakpoint_command'
+            - run_command:
+                command: 'break {{ current_buffer_name }}:{{ user_input_args }}'
 
     continue:
         steps:

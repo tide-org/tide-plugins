@@ -5,12 +5,8 @@ commands:
         steps:
             - run_config_command:
                 name: 'get_set_entrypoint'
-            - set_var:
-                name: 'breakpoint_command'
-                value: 'break *{{ app_entrypoint }}'
-              when: app_entrypoint != None
-            - run_command_string:
-                variable_name: 'breakpoint_command'
+            - run_command:
+                command: 'break *{{ app_entrypoint }}'
               when: app_entrypoint != None
             - run_config_command:
                 name: 'continue'
@@ -37,11 +33,8 @@ commands:
               when: app_entrypoint != None
     connect_to_remote:
         steps:
-            - set_var:
-                name: 'target_remote_command'
-                value: 'target remote {{ remote_address }}'
-            - run_command_string:
-                variable_name: 'target_remote_command'
+            - run_command:
+                command: 'target remote {{ remote_address }}'
     check_set_remote:
         steps:
             - run_python_function:
